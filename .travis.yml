@@ -5,3 +5,12 @@ services:
 script:
   - docker build -t caesarcc/trevis_teste .
   - docker images caesarcc/trevis_teste
+
+before_deploy:
+  - docker login -u caesarcc -p Js2RA0RWaP@jEC
+
+deploy:
+  provider: script
+  script: docker push caesarcc/trevis_teste
+  on:
+    branch: master
